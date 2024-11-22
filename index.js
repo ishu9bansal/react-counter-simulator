@@ -1,21 +1,37 @@
 let count = 0;
 
-function renderApp() {
-    document.getElementById('counter').innerText = count;
-    const message = document.getElementById('message');
-    if (count > 10) {
-        message.innerText = "Threshold crossed!";
-    } else {
-        message.innerText = "";
-    }
+function setCount(value){
+    count = value;
+    renderApp();
 }
 
-document.getElementById('increment').addEventListener('click', () => {
-    count++;
-    renderApp();
-});
+function renderApp() {
+    const root = document.getElementById('root')
+    root.innerHTML = '';
 
-document.getElementById('reset').addEventListener('click', () => {
-    count = 0;
-    renderApp();
-});
+    const counterDiv = document.createElement('div');
+    counterDiv.id = "counter";
+    counterDiv.innerText = count;
+    root.appendChild(counterDiv);
+
+    const incrementButton = document.createElement('button');
+    incrementButton.id = "increment";
+    incrementButton.className = "button";
+    incrementButton.innerText = "Increment";
+    incrementButton.onclick = () => setCount(count + 1);
+    root.appendChild(incrementButton);
+
+    const resetButton = document.createElement('button');
+    resetButton.id = "reset";
+    resetButton.className = "button";
+    resetButton.innerText = "Reset";
+    resetButton.onclick = () => setCount(0);
+    root.appendChild(resetButton);
+
+    const messageDiv = document.createElement('div');
+    messageDiv.id = "message";
+    messageDiv.innerText = count > 10 ? "Threshold crossed!" : "";
+    root.appendChild(messageDiv);
+}
+
+renderApp();
