@@ -27,14 +27,12 @@ function renderComponent() {
 
     const incrementButton = document.createElement('button');
     incrementButton.id = "increment";
-    incrementButton.className = "button";
     incrementButton.innerText = "Increment";
     incrementButton.onclick = () => setCount(count + 1);
     mainDiv.appendChild(incrementButton);
 
     const resetButton = document.createElement('button');
     resetButton.id = "reset";
-    resetButton.className = "button";
     resetButton.innerText = "Reset";
     resetButton.onclick = () => setCount(0);
     mainDiv.appendChild(resetButton);
