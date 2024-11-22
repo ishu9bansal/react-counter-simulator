@@ -2,13 +2,19 @@ let count = 0;
 
 function setCount(value){
     count = value;
-    renderApp();
+    document.dispatchEvent(new Event('CounterUpdated'));
 }
 
 function renderApp() {
-    const root = document.getElementById('root')
-    root.innerHTML = '';
-    root.appendChild(renderComponent());
+    const root = document.getElementById('root');
+    function updateComponent() {
+        root.innerHTML = '';
+        root.appendChild(renderComponent());
+    }
+
+    document.addEventListener('CounterUpdated', updateComponent, false);
+    
+    updateComponent();
 }
 
 function renderComponent() {
