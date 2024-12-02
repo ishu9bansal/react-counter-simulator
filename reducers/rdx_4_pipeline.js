@@ -4,6 +4,8 @@ const subtractThree = (x) => x - 3;
 
 const pipeline = [addOne, double, subtractThree];
 
-const result = pipeline.reduce((acc, fn) => fn(acc), 5);
+const input = 5;
 
-console.log(result);
+const output = pipeline.reduce((acc, fn) => fn(acc), input);
+
+console.log(output);
